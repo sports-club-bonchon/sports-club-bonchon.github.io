@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reservaciones - Cancha Squash</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #e8e2e2ff;
+      color: #000000ff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(27, 98, 251, 1);
+      padding: 10px 20px;
+      color: #fff;
+    }
+    header img {
+      height: 90px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+      text-align: center;
+      flex: 1;
+    }
+    #fecha-hora {
+      font-size: 1.2em;
+      white-space: nowrap;
+    }
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 90%;
+      max-width: 1000px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: center;
+      font-size: 1.2em;
+      border-bottom: 1px solid #444;
+    }
+    th {
+      background-color: #222;
+      color: #fff;
+    }
+    /* Colores para los estados */
+    .Disponible {
+      background-color: #2e7d32; /* Verde */
+      color: black;
+    }
+    .Reservado {
+      background-color: #c62828; /* Rojo */
+      color: black;
+    }
+    .Actual {
+      background-color: #f9a825; /* Amarillo */
+      color: black;
+    }
+    .Finalizado {
+      background-color: #616161; /* Gris */
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="LogoMatizadoSinFondo.png" alt="Logo">
+    <h1>Sports Club Bonachon</h1>
+    <div id="fecha-hora"></div>
+  </header>
+
+  <div id="tabla"></div>
+
+  <script>
+    const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEkrkeDMHTn_DwbUbcjFBC2QHzMKrdVEvF3Oh53_Sfm8HfWiWnxeLTd7mss9g74eHs82D4kevRhGRP/pub?gid=0&single=true&output=csv"; // <-- Pega aquí el enlace CSV publicado desde Google Sheets
+
+    // Actualizar fecha y hora en vivo
+    function actualizarFechaHora() {
+      const ahora = new Date();
+      const opciones = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
+      const fecha = ahora.toLocaleDateString('es-MX', opciones);
+      const hora = ahora.toLocaleTimeString('es-MX');
+      document.getElementById("fecha-hora").textContent = `${fecha} ${hora}`;
+    }
+    setInterval(actualizarFechaHora, 1000);
+    actualizarFechaHora();
+
+    // Cargar datos de Google Sheets
+    async function cargarDatos() {
+      try {
+        const respuesta = await fetch(url);
+        const texto = await respuesta.text();
+        const filas = texto.trim().split("\n").map(f => f.split(","));
+
+        let html = "<table><tr>";
+        filas[0].forEach(celda => html += `<th>${celda}</th>`);
+        html += "</tr>";
+
+        for (let i = 1; i < filas.length; i++) {
+          html += "<tr>";
+          filas[i].forEach((celda, idx) => {
+            if (idx === filas[0].length - 1) {
+              // Última columna = Estado
+              const estadoClase = celda.trim().replace(/\s+/g, "\\ ");
+              html += `<td class="${estadoClase}">${celda}</td>`;
+            } else {
+              html += `<td>${celda}</td>`;
+            }
+          });
+          html += "</tr>";
+        }
+
+        html += "</table>";
+        document.getElementById("tabla").innerHTML = html;
+      } catch (error) {
+        console.error("Error al cargar datos:", error);
+      }
+    }
+
+    cargarDatos();
+    setInterval(cargarDatos, 10000); // Actualiza cada 10 segundos
+  </script>
+</body>
+</html>
