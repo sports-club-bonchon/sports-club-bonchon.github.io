@@ -54,12 +54,12 @@ setInterval(cargarDatos, 10000); // Actualiza cada 10 segundos
 // --- Rotar publicidad (imágenes/videos) ---
 const publicidadIzq = [
     "<video src='videos/Rifamoto.mp4' autoplay muted loop></video>",
-    "<img src='img/Torneofuerza160825.jpeg'>",
+    "<img src='img/TorneoFuerza160825.jpeg'>",
     "<video src='videos/Sportsclubbonachon.mp4' autoplay muted loop></video>"
 ];
 const publicidadDer = [
     "<video src='videos/Rifapantalla.mp4' autoplay muted loop></video>",
-    "<img src='videos/Torneofuerza160825.mp4'>",
+    "<video src='videos/Torneofuerza160825.mp4' autoplay muted loop></video>",
     "<video src='videos/Sportsclubbonachon2.mp4' autoplay muted loop></video>"
 ];
 
@@ -74,4 +74,4 @@ function rotarPublicidad() {
 }
 
 rotarPublicidad();
-setInterval(rotarPublicidad, 15000); // cambia cada 15 segundos
+setInterval(rotarPublicidad, 90000); // cambia cada 90 segundos
