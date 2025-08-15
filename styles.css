@@ -1,0 +1,93 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #e8e2e2ff;
+    color: #000000ff;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(27, 98, 251, 1);
+    padding: 10px 20px;
+    color: #fff;
+}
+
+header img {
+    height: 90px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    text-align: center;
+    flex: 1;
+}
+
+#fecha-hora {
+    font-size: 1.2em;
+    white-space: nowrap;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 1000px;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: center;
+    font-size: 1.2em;
+    border-bottom: 1px solid #444;
+}
+
+th {
+    background-color: #222;
+    color: #fff;
+}
+
+/* Colores para los estados */
+.Disponible {
+    background-color: #2e7d32;
+    /* Verde */
+    color: black;
+}
+
+.Reservado {
+    background-color: #c62828;
+    /* Rojo */
+    color: black;
+}
+
+.Actual {
+    background-color: #f9a825;
+    /* Amarillo */
+    color: black;
+}
+
+.Finalizado {
+    background-color: #616161;
+    /* Gris */
+    color: black;
+}
+
+/* Publicidad */
+.publicidad img,
+.publicidad video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .publicidad {
+        display: none;
+        /* ocultar publicidad en pantallas pequeñas */
+    }
+}
