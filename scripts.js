@@ -53,12 +53,12 @@ setInterval(cargarDatos, 10000); // Actualiza cada 10 segundos
 
 // --- Rotar publicidad (imágenes/videos) ---
 const publicidadIzq = [
-    "<video src='videos/Rifamoto.mp4' autoplay muted loop></video>",
-    "<video src='videos/Sportsclubbonachon.mp4' autoplay muted loop></video>"
+    "<video src='videos/Rifamoto.mp4' autoplay muted loop playsinline preload='auto'></video>",
+    "<video src='videos/Sportsclubbonachon.mp4' autoplay muted loop playsinline preload='auto'></video>"
 ];
 const publicidadDer = [
-    "<video src='videos/Rifapantalla.mp4' autoplay muted loop></video>",
-    "<video src='videos/Sportsclubbonachon2.mp4' autoplay muted loop></video>"
+    "<video src='videos/Rifapantalla.mp4' autoplay muted loop playsinline preload='auto'></video>",
+    "<video src='videos/Sportsclubbonachon2.mp4' autoplay muted loop playsinline preload='auto'></video>"
 ];
 
 let idxIzq = 0,
