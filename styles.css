@@ -1,93 +1,159 @@
+/* =========================
+   PALETA DE COLORES
+   ========================= */
+:root {
+    --azul: #00b0e4;
+    --rojo: #e13636;
+    --rojo-fuerte: #a8252d;
+    --verde: #96c534;
+    --amarillo: #e0d53a;
+    --plateado: #afb5ba;
+    --fondo: #111;
+    --panel: #3b3b3b;
+}
+
+/* =========================
+   GENERAL
+   ========================= */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #e8e2e2ff;
-    color: #000000ff;
+    background-color: var(--panel);
+    color: #fff;
     margin: 0;
     padding: 0;
 }
 
+/* =========================
+   HEADER
+   ========================= */
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    background-color: rgba(27, 98, 251, 1);
-    padding: 10px 20px;
-    color: #fff;
+    flex-direction: column;
+    background-color: var(--fondo);
+    padding: 12px 20px;
+    color: var(--azul);
+    /*border-bottom: 3px solid var(--amarillo);*/
+    text-align: center;
 }
 
 header img {
-    height: 90px;
+    height: 70px;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 1.8em;
-    text-align: center;
-    flex: 1;
+    margin: 6px 0 0 0;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--azul);
 }
 
 #fecha-hora {
-    font-size: 1.2em;
-    white-space: nowrap;
+    font-size: 0.95em;
+    margin-top: 6px;
+    color: var(--plateado);
 }
 
+/* =========================
+   TABLA
+   ========================= */
 table {
     margin: 20px auto;
     border-collapse: collapse;
-    width: 90%;
-    max-width: 1000px;
-}
-
-th,
-td {
-    padding: 12px;
+    width: 100%;
+    max-width: 900px;
+    background-color: var(--panel);
+    border-radius: 12px;
     text-align: center;
-    font-size: 1.2em;
-    border-bottom: 1px solid #444;
+    overflow: hidden;
 }
 
 th {
-    background-color: #222;
+    background-color: var(--fondo);
     color: #fff;
+    padding: 10px;
+    font-size: 1.1em;
 }
 
-/* Colores para los estados */
+td {
+    padding: 12px;
+    text-align: center;
+    font-size: 1.05em;
+    border-bottom: 1px solid #222;
+}
+
+/* Alternar filas para mayor legibilidad */
+tbody tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+
+/* =========================
+   ESTADOS
+   ========================= */
 .Disponible {
-    background-color: #2e7d32;
-    /* Verde */
-    color: black;
+    background-color: var(--verde) !important;
+    color: #111 !important;
+    font-weight: bold;
 }
 
 .Reservado {
-    background-color: #c62828;
-    /* Rojo */
-    color: black;
+    background-color: var(--rojo) !important;
+    color: #fff !important;
+    font-weight: bold;
 }
 
 .Actual {
-    background-color: #f9a825;
-    /* Amarillo */
-    color: black;
+    background-color: var(--amarillo) !important;
+    color: #111 !important;
+    font-weight: bold;
 }
 
 .Finalizado {
-    background-color: #616161;
-    /* Gris */
-    color: black;
+    background-color: var(--plateado) !important;
+    color: #111 !important;
+    font-weight: bold;
 }
 
-/* Publicidad */
-.publicidad img,
-.publicidad video {
+/* =========================
+   PUBLICIDAD
+   (Oculta en móvil)
+   ========================= */
+.media img,
+.media video {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
 }
 
-/* Responsive */
 @media (max-width: 991px) {
-    .publicidad {
-        display: none;
-        /* ocultar publicidad en pantallas pequeñas */
+    .media {
+        display: none !important;
+    }
+}
+
+/* =========================
+   RESPONSIVE GENERAL
+   ========================= */
+@media (max-width: 768px) {
+
+    header img {
+        height: 60px;
+    }
+
+    header h1 {
+        font-size: 1.3em;
+    }
+
+    #fecha-hora {
+        font-size: 0.9em;
+    }
+
+    table {
+        font-size: 0.9em;
+    }
+
+    th, td {
+        padding: 8px;
     }
 }
